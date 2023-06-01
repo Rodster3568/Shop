@@ -14,6 +14,9 @@ namespace Shop.Data
         public DbSet<Category> Category { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<InquiryHeader> InquiryHeader { get; set; }
+        public DbSet<InquiryDetail> InquiryDetail { get; set; }
+
 
     }
 }

@@ -1,7 +1,9 @@
 ﻿@page
 @model RegisterModel
+@using Shop
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 
-@if (User.IsInRole(Shop.WC.AdminRole))
+@if (User.IsInRole(WC.AdminRole))
 {
     <h1>Регистрация админ-аккаунта</h1>
 }
@@ -41,7 +43,7 @@ else
                 <label asp-for="Input.ConfirmPassword">Повторите пароль</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            @if (User.IsInRole(Shop.WC.AdminRole))
+            @if (User.IsInRole(WC.AdminRole))
             {
                 <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-warning">Зарегистрировать админ-аккаунт</button>
             }

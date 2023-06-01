@@ -34,8 +34,10 @@ namespace Shop.Controllers
             {
                 _db.Category.Add(obj);
                 _db.SaveChanges();
+                TempData[WC.Success] = "Категория успешно добавлена.";
                 return RedirectToAction("Index");
             }
+            TempData[WC.Error] = "Категория не добавлена.";
             return View(obj);
         }
         // GET - EDIT
@@ -62,8 +64,10 @@ namespace Shop.Controllers
             {
                 _db.Category.Update(obj);
                 _db.SaveChanges();
+                TempData[WC.Success] = "Категория успешно обновлена.";
                 return RedirectToAction("Index");
             }
+            TempData[WC.Error] = "Категория не обновлена.";
             return View(obj);
         }
 
@@ -94,6 +98,7 @@ namespace Shop.Controllers
             }
             _db.Category.Remove(obj);
             _db.SaveChanges();
+            TempData[WC.Success] = "Категория успешно удалена.";
             return RedirectToAction("Index");
 
         }

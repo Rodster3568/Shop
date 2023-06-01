@@ -80,6 +80,7 @@ namespace Shop.Controllers
 
                     product.Image = fileName + extension;
                     _db.Product.Add(product);
+                    TempData[WC.Success] = "Товар добавлен.";
                 }
                 else
                 {
@@ -111,6 +112,7 @@ namespace Shop.Controllers
                     }
 
                     _db.Product.Update(product);
+                    TempData[WC.Success] = "Товар обновлен.";
                 }
 
                 _db.SaveChanges();
@@ -154,6 +156,7 @@ namespace Shop.Controllers
             }
             _db.Product.Remove(obj);
             _db.SaveChanges();
+            TempData[WC.Success] = "Товар удален.";
             return RedirectToAction("Index");
 
         }

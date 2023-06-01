@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Shop.Data;
 
+
+
 namespace Shop
 {
     public class Program
@@ -19,7 +21,7 @@ namespace Shop
                 .AddDefaultTokenProviders().AddDefaultUI()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             //перед релизом убрать
-            builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            // builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddSession(Options =>
@@ -28,6 +30,8 @@ namespace Shop
                 Options.Cookie.HttpOnly = true;
                 Options.Cookie.IsEssential = true;
             });
+            builder.Services.AddScoped<IInquiryHeaderRepository, InquiryHeaderRepository>();
+            builder.Services.AddScoped<IInquiryDetailRepository, InquiryDetailRepository>();
             builder.Services.AddControllersWithViews();
             var app = builder.Build();
 

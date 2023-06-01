@@ -68,9 +68,11 @@ namespace Rocky.Controllers
                 && HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WC.SessionCart).Count() > 0)
             {
                 shoppingCartList = HttpContext.Session.Get<List<ShoppingCart>>(WC.SessionCart);
+
             }
             shoppingCartList.Add(new ShoppingCart { ProductId = id });
             HttpContext.Session.Set(WC.SessionCart, shoppingCartList);
+            TempData[WC.Success] = "Товар добавлен в корзину.";
             return RedirectToAction(nameof(Index));
         }
 
@@ -90,6 +92,7 @@ namespace Rocky.Controllers
             }
 
             HttpContext.Session.Set(WC.SessionCart, shoppingCartList);
+            TempData[WC.Success] = "Товар удален из корзины.";
             return RedirectToAction(nameof(Index));
         }
 
